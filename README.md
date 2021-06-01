@@ -1,3 +1,46 @@
+# FR
+# Packet pour extraire et stocker les différentes données des réseaux sociaux dans une base de données communes
+
+
+## Guide pour bien démarrer :
+**Étape 1)** Télécharger le projet complet sous la forme d'un zip (le bouton vert en haut à droite).
+**Étape 2)** Décompresser le fichier zip dans un dossier vide (le dossier accueillera donc le projet).
+**Étape 3)** Ouvrez les fichiers *".py"*.
+Vous êtes maintenant prêt à utiliser le packet.
+
+## Comment réaliser un scraping :
+### Phase 1 (Extraction en csv)
+#### (L'objectif est d'abord d'accumuler les données des réseaux sociaux dans des fichiers csv).
+**Étape 1)** Ouvrez le fichier *"superfunction.py"*.
+**Étape 2)** Écrivez votre requête en la construisant de cette façon :
+*scrapeMediaPostBySearch("vacciné", count=50, post_file="vaccin_table_post.csv", profile_file= "vaccin_table_profile.csv")*
+- Le premier argument est le mot clé qui sera recherché, ici, c'est le mot "vacciné".
+- Le second argument est le nombre maximum de postes qui seront recherché (par réseaux sociaux).
+- Le troisième argument est le nom du fichier CSV qui sera créé pour stocker les postes.
+- Le quatrième argument est le nom du fichier CSV qui sera créé pour stocker les profils.
+
+**Étape 3)** Recommencer l'étape 2 avec un mot clé différent pour accumuler les données dans les même fichiers csv.
+
+### Phase 2 (Préparer la base de données SQLite)
+#### (Pour pouvoir stocker les données, il est nécessaire d'avoir une base donnée SQLite prête).
+**Étape 1)** Copier le modèle vide de base de données SQLite intitulé *"sqlite_template.db"*.
+**Étape 2)** Renommez le fichier selon votre convenance, exemple : *"vaccin_sqlite.db"*.
+
+### Phase 3 (Stockage en SQLite)
+#### (Maintenant que les fichiers csv sont créé, il faut injecter les fichiers csv dans une base de données SQLite).
+**Étape 1)** Ouvrez le fichier *"csv_to_sql.py"*.
+**Étape 2)** Écrivez votre requête en la construisant de cette façon :
+pour les profiles : *csvToSqlite("vaccin_table_profile","vaccin_db", "table_profile", profile_structure)*
+pour les postes : *csvToSqlite("vaccin_table_post","vaccin_db", "table_post", post_structure)*
+- Le premier argument est le nom du fichier csv qui va être transféré (le nom sans le *".csv"*).
+- Le second argument est le nom de la base de données SQLite destinataire.
+- Le troisième argument est le nom de la table destinataire à l'intérieur de la base SQLite (il y en deux : *"table_profile"* pour les profils et *"table_post"* pour les postes).
+- Le quatrième argument correspond à la structure des données du fichier csv et de la table (il y en a deux : *"profile_structure"* pour les profils et *"post_structure"* pour les postes).
+
+**Étape 3)** Pour effacer une table dans la base SQLite, utilisez la fonction : *resetTable("vaccin_db","table_profile")*
+- Le premier argument est le nom de la base de données SQLite destinataire.
+- Le second argument est le nom de la table qui va être effacé à l'intérieur de la base SQLite.
+
 # EN
 # Packet to extract and store various social network data in a common database
 
@@ -41,45 +84,3 @@ for positions: *csvToSqlite("vaccin_table_post", "vaccin_db", "table_post", post
 - The first argument is the name of the destination SQLite database.
 - The second argument is the name of the table that will be cleared inside the SQLite database.
 
-# FR
-# Packet pour extraire et stocker les différentes données des réseaux sociaux dans une base de données communes
-
-
-## Guide pour bien démarrer :
-**Étape 1)** Télécharger le projet complet sous la forme d'un zip (le bouton vert en haut à droite).
-**Étape 2)** Décompresser le fichier zip dans un dossier vide (le dossier accueillera donc le projet).
-**Étape 3)** Ouvrez les fichiers *".py"*.
-Vous êtes maintenant prêt à utiliser le packet.
-
-## Comment réaliser un scraping :
-### Phase 1 (Extraction en csv)
-#### (L'objectif est d'abord d'accumuler les données des réseaux sociaux dans des fichiers csv).
-**Étape 1)** Ouvrez le fichier *"superfunction.py"*.
-**Étape 2)** Écrivez votre requête en la construisant de cette façon :
-*scrapeMediaPostBySearch("vacciné", count=50, post_file="vaccin_table_post.csv", profile_file= "vaccin_table_profile.csv")*
-- Le premier argument est le mot clé qui sera recherché, ici, c'est le mot "vacciné".
-- Le second argument est le nombre maximum de postes qui seront recherché (par réseaux sociaux).
-- Le troisième argument est le nom du fichier CSV qui sera créé pour stocker les postes.
-- Le quatrième argument est le nom du fichier CSV qui sera créé pour stocker les profils.
-
-**Étape 3)** Recommencer l'étape 2 avec un mot clé différent pour accumuler les données dans les même fichiers csv.
-
-### Phase 2 (Préparer la base de données SQLite)
-#### (Pour pouvoir stocker les données, il est nécessaire d'avoir une base donnée SQLite prête).
-**Étape 1)** Copier le modèle vide de base de données SQLite intitulé *"sqlite_template.db"*.
-**Étape 2)** Renommez le fichier selon votre convenance, exemple : *"vaccin_sqlite.db"*.
-
-### Phase 3 (Stockage en SQLite)
-#### (Maintenant que les fichiers csv sont créé, il faut injecter les fichiers csv dans une base de données SQLite).
-**Étape 1)** Ouvrez le fichier *"csv_to_sql.py"*.
-**Étape 2)** Écrivez votre requête en la construisant de cette façon :
-pour les profiles : *csvToSqlite("vaccin_table_profile","vaccin_db", "table_profile", profile_structure)*
-pour les postes : *csvToSqlite("vaccin_table_post","vaccin_db", "table_post", post_structure)*
-- Le premier argument est le nom du fichier csv qui va être transféré (le nom sans le *".csv"*).
-- Le second argument est le nom de la base de données SQLite destinataire.
-- Le troisième argument est le nom de la table destinataire à l'intérieur de la base SQLite (il y en deux : *"table_profile"* pour les profils et *"table_post"* pour les postes).
-- Le quatrième argument correspond à la structure des données du fichier csv et de la table (il y en a deux : *"profile_structure"* pour les profils et *"post_structure"* pour les postes).
-
-**Étape 3)** Pour effacer une table dans la base SQLite, utilisez la fonction : *resetTable("vaccin_db","table_profile")*
-- Le premier argument est le nom de la base de données SQLite destinataire.
-- Le second argument est le nom de la table qui va être effacé à l'intérieur de la base SQLite.
