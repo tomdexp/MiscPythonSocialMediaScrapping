@@ -8,6 +8,9 @@
 **Étape 2)** Décompresser le fichier zip dans un dossier vide (le dossier accueillera donc le projet).
 
 **Étape 3)** Ouvrez les fichiers *".py"*.
+
+**Étape 4)** Installez les bibliothèques nécessaires au bon fonctionnement du packet avec la commande : *pip install -r requirements.txt*
+
 Vous êtes maintenant prêt à utiliser le packet.
 
 ## Comment réaliser un scraping :
@@ -59,6 +62,9 @@ pour les postes : *csvToSqlite("vaccin_table_post","vaccin_db", "table_post", po
 **Step 2)** Unzip the zip file into an empty folder (the folder will host the project).
 
 **Step 3)** Open the *".py "* files.
+
+**Step 4)** Install the libraries necessary for the proper functioning of the package with the command : *pip install -r requirements.txt*
+
 You are now ready to use the package.
 
 ## How to make a scraping :
@@ -97,3 +103,5 @@ for positions: *csvToSqlite("vaccin_table_post", "vaccin_db", "table_post", post
 **Step 3)** To clear a table in the SQLite database, use the function : *resetTable("vaccine_db", "table_profile")*
 - The first argument is the name of the destination SQLite database.
 - The second argument is the name of the table that will be cleared inside the SQLite database.
+
+----
