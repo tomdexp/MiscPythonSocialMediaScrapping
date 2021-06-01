@@ -47,6 +47,7 @@ pour les postes : *csvToSqlite("vaccin_table_post","vaccin_db", "table_post", po
 - Le premier argument est le nom de la base de données SQLite destinataire.
 - Le second argument est le nom de la table qui va être effacé à l'intérieur de la base SQLite.
 
+----
 
 # EN
 # Packet to extract and store various social network data in a common database
