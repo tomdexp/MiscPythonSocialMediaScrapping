@@ -47,7 +47,6 @@ pour les postes : *csvToSqlite("vaccin_table_post","vaccin_db", "table_post", po
 - Le premier argument est le nom de la base de données SQLite destinataire.
 - Le second argument est le nom de la table qui va être effacé à l'intérieur de la base SQLite.
 
-#
 
 # EN
 # Packet to extract and store various social network data in a common database
@@ -97,5 +96,3 @@ for positions: *csvToSqlite("vaccin_table_post", "vaccin_db", "table_post", post
 **Step 3)** To clear a table in the SQLite database, use the function : *resetTable("vaccine_db", "table_profile")*
 - The first argument is the name of the destination SQLite database.
 - The second argument is the name of the table that will be cleared inside the SQLite database.
-
-Translated with www.DeepL.com/Translator (free version)
